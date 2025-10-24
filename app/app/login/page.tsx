@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Scissors, Mail, Lock, Sparkles } from 'lucide-react';
+import { Scissors, Mail, Lock, Sparkles, ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -49,6 +50,15 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen barber-gradient relative overflow-hidden flex items-center justify-center p-4">
+      {/* Back to Landing Page Button */}
+      <Link
+        href="/"
+        className="fixed top-6 left-6 z-50 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-xl border border-yellow-500/30 rounded-full text-yellow-400 hover:bg-yellow-500/10 hover:border-yellow-500/50 hover:text-yellow-300 transition-all duration-300 hover:scale-105 shadow-lg group"
+      >
+        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+        <span className="text-sm font-medium hidden sm:inline">Volver</span>
+      </Link>
+
       {/* Animated barber pole accent */}
       <div className="fixed top-0 left-0 w-2 h-full barber-pole opacity-30 z-0"></div>
       <div className="fixed top-0 right-0 w-2 h-full barber-pole opacity-30 z-0"></div>
