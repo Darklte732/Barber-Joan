@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     // Parse the requested date
     const requestedDate = parseISO(date);
-    const dayOfWeek = requestedDate.toLocaleDateString('en-US', { weekday: 'lowercase' });
+    const dayOfWeek = requestedDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
 
     // Check if business is open on this day
     const dayHours = settings.business_hours[dayOfWeek];

@@ -42,7 +42,7 @@ export async function validateAppointmentTime(
     }
 
     // Check if the appointment is within business hours
-    const dayOfWeek = startTime.toLocaleDateString('en-US', { weekday: 'lowercase' });
+    const dayOfWeek = startTime.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const dayHours = settings.business_hours[dayOfWeek];
 
     if (!dayHours || !dayHours.open || !dayHours.close) {
@@ -201,7 +201,7 @@ export async function findAvailableSlots(
     const settings = await db.getBusinessSettings();
     if (!settings) return [];
 
-    const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'lowercase' });
+    const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
     const dayHours = settings.business_hours[dayOfWeek];
 
     if (!dayHours || !dayHours.open || !dayHours.close) {
