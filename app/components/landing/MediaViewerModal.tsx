@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface MediaViewerModalProps {
@@ -92,22 +93,26 @@ export function MediaViewerModal({ media, isOpen, onClose }: MediaViewerModalPro
             onMouseLeave={() => setIsDragging(false)}
           >
             {/* After Image */}
-            <img
-              src={media.afterUrl}
-              alt="After"
-              className="absolute inset-0 w-full h-full object-contain"
-              draggable={false}
-            />
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src={media.afterUrl}
+                alt="After"
+                fill
+                className="object-contain"
+                draggable={false}
+              />
+            </div>
 
             {/* Before Image with clip */}
             <div
               className="absolute inset-0 overflow-hidden"
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
-              <img
+              <Image
                 src={media.beforeUrl}
                 alt="Before"
-                className="w-full h-full object-contain"
+                fill
+                className="object-contain"
                 draggable={false}
               />
             </div>
@@ -141,11 +146,14 @@ export function MediaViewerModal({ media, isOpen, onClose }: MediaViewerModalPro
           />
         ) : (
           // Single Image
-          <img
-            src={media.url}
-            alt={media.title}
-            className="max-w-full max-h-[70vh] rounded-xl shadow-2xl object-contain"
-          />
+          <div className="relative w-full max-w-full h-[70vh] max-h-[70vh]">
+            <Image
+              src={media.url}
+              alt={media.title}
+              fill
+              className="rounded-xl shadow-2xl object-contain"
+            />
+          </div>
         )}
 
         {/* Info */}

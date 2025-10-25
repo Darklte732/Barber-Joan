@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Input } from '@/components/ui/input';
@@ -333,10 +334,11 @@ export default function GalleryPage() {
                           className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 border-2 border-gray-200 hover:border-yellow-500 transition-all duration-300"
                         >
                           {/* Image/Video */}
-                          <img
+                          <Image
                             src={item.url}
                             alt={item.title}
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
                           />
 
                           {/* Type Badge */}
@@ -453,11 +455,12 @@ export default function GalleryPage() {
                 <Label className="mb-2 block">Vista Previa ({uploadPreview.length})</Label>
                 <div className="grid grid-cols-3 gap-2">
                   {uploadPreview.map((preview, index) => (
-                    <div key={index} className="relative aspect-square">
-                      <img
+                    <div key={index} className="relative aspect-square rounded-lg overflow-hidden">
+                      <Image
                         src={preview}
                         alt={`Preview ${index + 1}`}
-                        className="w-full h-full object-cover rounded-lg border-2 border-gray-200"
+                        fill
+                        className="object-cover border-2 border-gray-200"
                       />
                     </div>
                   ))}
@@ -523,11 +526,12 @@ export default function GalleryPage() {
           <div className="space-y-4">
             {/* Preview */}
             {selectedMedia && (
-              <div className="aspect-square w-full rounded-lg overflow-hidden bg-gray-100">
-                <img
+              <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-gray-100">
+                <Image
                   src={selectedMedia.url}
                   alt={selectedMedia.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             )}

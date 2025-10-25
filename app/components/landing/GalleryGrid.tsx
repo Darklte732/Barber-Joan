@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 
 interface MediaItem {
@@ -153,10 +154,11 @@ export function GalleryGrid({ onMediaClick }: GalleryGridProps) {
             }}
           >
             {/* Image */}
-            <img
+            <Image
               src={media.url}
               alt={media.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
 
