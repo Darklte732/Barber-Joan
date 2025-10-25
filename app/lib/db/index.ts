@@ -43,16 +43,16 @@ export async function getClient() {
   }, 5000);
 
   // Monkey patch the query method to keep track of the last query executed
-  client.query = (...args: any[]) => {
+  (client as any).query = (...args: any[]) => {
     return originalQuery.apply(client, args);
   };
 
-  client.release = () => {
+  (client as any).release = () => {
     // Clear our timeout
     clearTimeout(timeout);
     // Set the methods back to their old un-monkey-patched version
-    client.query = originalQuery;
-    client.release = originalRelease;
+    (client as any).query = originalQuery;
+    (client as any).release = originalRelease;
     return originalRelease.apply(client);
   };
 
