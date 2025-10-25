@@ -44,6 +44,7 @@ export async function getClient() {
 
   // Monkey patch the query method to keep track of the last query executed
   (client as any).query = (...args: any[]) => {
+    // @ts-ignore - Monkey patching requires bypassing strict types
     return originalQuery.apply(client, args);
   };
 
