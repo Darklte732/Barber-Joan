@@ -108,6 +108,17 @@ export default function HomePage() {
             <p className="text-sm text-gray-300 mb-4">
               Habla con nuestro asistente para reservar tu cita
             </p>
+            
+            {/* Female Barber Image */}
+            <div className="flex justify-center items-center mb-6 mt-8">
+              <img 
+                src="/Barber Ai female.jpeg" 
+                alt="Asistente de Barbería" 
+                className="w-40 h-40 rounded-full object-cover border-3 border-yellow-400/40 shadow-lg"
+                style={{ imageRendering: 'high-quality' }}
+              />
+            </div>
+            
             {/* 11 Labs Widget */}
             <ElevenLabsWidget />
           </div>
